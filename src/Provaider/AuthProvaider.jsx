@@ -10,7 +10,7 @@ const auth = getAuth(app)
 
 const AuthProvaider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [loding, setLoding] = useState(null)
+    const [loding, setLoding] = useState(true)
 
 
     const createUser = (email, password) => {

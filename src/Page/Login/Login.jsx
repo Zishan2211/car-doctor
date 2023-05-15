@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginimg from '../../assets/images/login/login.svg'
 import { useContext } from "react";
 import { AuthContex } from "../../Provaider/AuthProvaider";
@@ -6,7 +6,8 @@ import { AuthContex } from "../../Provaider/AuthProvaider";
 const Login = () => {
 
     const { signIn } = useContext(AuthContex);
-
+    const nevegate = useNavigate()
+    const form = location.state?.from?.pathname || '/'
 
 
     const heldelLogin = event => {
@@ -20,6 +21,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                nevegate(form,{replace : true})
             })
             .catch(error => console.log(error)
             )
